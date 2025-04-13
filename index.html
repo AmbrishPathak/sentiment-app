@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medication Tracker Setup</title>
+    <title>ChatGPT-like Interface</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Medication Tracker</h1>
-            <div class="quote-box">
-                <p>", One day at a time, one dose at a time."</p>
+        <div class="chat-container">
+            <div id="response-area" class="response-area">
+                <div class="system-message">Welcome! How can I help you today?</div>
+                </div>
+            <div class="input-area">
+                <textarea id="prompt-input" placeholder="Ask me anything..."></textarea>
+                <button id="send-button">Send</button>
             </div>
-        </div>
-
-        <div class="setup-section">
-            <h2>Setup Your Plan</h2>
-            <div class="input-group">
-                <label for="duration">Duration (days)</label>
-                <select id="duration">
-                    <option value="10">10 Days</option>
-                    <option value="7">7 Days</option>
-                    <option value="14">14 Days</option>
-                    </select>
-            </div>
-
-            <div class="input-group">
-                <label for="doses">Doses per day</label>
-                <select id="doses">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    </select>
-            </div>
-
-            <button class="start-button">Start Tracking</button>
         </div>
     </div>
+
+    <script>
+        // Basic JavaScript for interaction (you'll expand this later)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sendButton = document.getElementById('send-button');
+            const promptInput = document.getElementById('prompt-input');
+            const responseArea = document.getElementById('response-area');
+
+            sendButton.addEventListener('click', () => {
+                const userPrompt = promptInput.value.trim();
+                if (userPrompt) {
+                    // For now, just display the user's prompt
+                    const userMessage = document.createElement('div');
+                    userMessage.classList.add('user-message');
+                    userMessage.textContent = userPrompt;
+                    responseArea.appendChild(userMessage);
+
+                    // Clear the input
+                    promptInput.value = '';
+
+                    // In the future, you'll send this to your sentiment analysis or AI model
+                    // and append the response to the responseArea.
+                    const botResponse = document.createElement('div');
+                    botResponse.classList.add('bot-response');
+                    botResponse.textContent = "This is a placeholder response.";
+                    responseArea.appendChild(botResponse);
+
+                    // Scroll to the bottom
+                    responseArea.scrollTop = responseArea.scrollHeight;
+                }
+            });
+
+            promptInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' && !event.shiftKey) {
+                    event.preventDefault(); // Prevent newline in textarea
+                    sendButton.click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

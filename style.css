@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    background-color: #f7f7f7;
+    background-color: #f0f0f0; /* Light gray background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,75 +10,88 @@ body {
 
 .container {
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Adjust width as needed */
+    max-width: 900px;
     padding: 30px;
-    width: 400px; /* Adjust width as needed */
+    display: flex;
+    flex-direction: column;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 20px;
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows chat container to take up available vertical space */
 }
 
-.header h1 {
-    color: #ff8c00; /* Orange color from the image */
-    margin-bottom: 10px;
+.response-area {
+    flex-grow: 1;
+    overflow-y: auto; /* Enable scrolling for long conversations */
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
 }
 
-.quote-box {
-    background-color: #fff8e1; /* Light yellow background */
+.system-message {
+    background-color: #e6f7ff; /* Light blue for system messages */
+    color: #333;
     padding: 10px 15px;
     border-radius: 5px;
-    color: #795548; /* Brownish text color */
-    font-style: italic;
-    font-size: 0.9em;
-}
-
-.setup-section h2 {
-    color: #333;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.input-group {
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
+    margin-bottom: 10px;
     font-size: 0.95em;
 }
 
-.input-group select {
-    width: 100%;
-    padding: 10px;
+.user-message {
+    background-color: #dcf8c6; /* Light green for user messages */
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    align-self: flex-end; /* Align user messages to the right */
+    word-break: break-word;
+}
+
+.bot-response {
+    background-color: #fff; /* White for bot responses */
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    align-self: flex-start; /* Align bot responses to the left */
+    border: 1px solid #eee;
+    word-break: break-word;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+.input-area textarea {
+    flex-grow: 1;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1em;
-    appearance: none; /* Remove default arrow */
-    background-image: url('data:image/svg+xml;utf8,<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: 50%;
+    resize: vertical; /* Allow vertical resizing of the textarea */
 }
 
-.start-button {
-    background-color: #ff8c00; /* Orange button color */
+.input-area button {
+    background-color: #007bff; /* Blue send button */
     color: #fff;
-    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    padding: 12px 20px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1em;
     transition: background-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-.start-button:hover {
-    background-color: #e67e00;
+.input-area button:hover {
+    background-color: #0056b3;
 }
